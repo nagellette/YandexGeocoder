@@ -6,14 +6,17 @@ determine response count
 '''
 def yandexMetaAnalysis(yandexjson):
 
+    return_count = []
+
     analysisjson = yandexjson
     analysisjson = analysisjson['response']
     analysisjson = analysisjson['GeoObjectCollection']
     analysisjson = analysisjson['metaDataProperty']
     analysisjson = analysisjson['GeocoderResponseMetaData']
-    analysisjson = analysisjson['found']
+    return_count.append(analysisjson['results'])
+    return_count.append(analysisjson['found'])
 
-    return analysisjson
+    return return_count
 
 '''
 get and return geocoded coordinates
