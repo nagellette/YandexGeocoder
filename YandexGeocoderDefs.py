@@ -52,11 +52,12 @@ def yandexGetGeocode(yandexjson):
         temp3 = temp1['pos'].split()
         temp2.append(temp3[0])
         temp2.append(temp3[1])
+        # adding the real search count to the inner geocode response
+        temp2.append(counter+1)
         geocodedresponse.append(temp2)
         temp1 = []
         temp2 = []
         temp3 = []
         counter += 1
-
 
     return geocodedresponse

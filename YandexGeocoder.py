@@ -10,7 +10,7 @@ addresses = f_in.readlines()
 f_in.close()
 
 f_out = open('geocode_output', 'w')
-f_out.write('Address' + '\t' + 'Results' + '\t'  + 'Found' + '\t' + 'Kind' + '\t' + 'Precision' + '\t' + 'Lat' + '\t' + 'Lon' + '\n')
+f_out.write('Address' + '\t' + 'Results' + '\t'  + 'Found' + '\t' + 'Kind' + '\t' + 'Precision' + '\t' + 'Lat' + '\t' + 'Lon' + '\t' + 'Count' '\n')
 
 # loop on the address list and send response and get geocoded responds
 for address in addresses:
@@ -28,9 +28,9 @@ for address in addresses:
     if geocodeCount[1] >= 1:
         geocoded_addresses = geocoderDefs.yandexGetGeocode(jsonresponse)
         for geocoded_address in geocoded_addresses:
-            f_out.write(address.rstrip() + '\t' + geocodeCount[0] + '\t'  + geocodeCount[1] + '\t' + geocoded_address[0] + '\t' + geocoded_address[1] + '\t' + geocoded_address[2] + '\t' + geocoded_address[3] + '\n')
+            f_out.write(address.rstrip() + '\t' + geocodeCount[0] + '\t'  + geocodeCount[1] + '\t' + geocoded_address[0] + '\t' + geocoded_address[1] + '\t' + geocoded_address[2] + '\t' + geocoded_address[3] + '\t' + str(geocoded_address[4]) + '\n')
     else:
-        f_out.write(address.rstrip() + '\t' + geocodeCount[0] + '\t'  + geocodeCount[1] + '\t' + '' + '\t' + '' + '\t' + '' + ' ' + '' + '\n')
+        f_out.write(address.rstrip() + '\t' + geocodeCount[0] + '\t'  + geocodeCount[1] + '\t' + '' + '\t' + '' + '\t' + '' + '\t' + '' + '\t' + '0' '\n')
 
 
 f_out.close()
